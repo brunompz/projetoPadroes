@@ -3,9 +3,10 @@ package Decorator;
 import Entidades.Pedido;
 
 public class Frete extends PedidoDecorator {
-    private float precoFrete = 50;
-    public Frete(Pedido pedido) {
+    private float precoFrete;
+    public Frete(Pedido pedido, float precoFrete) {
         super(pedido);
+        this.precoFrete = precoFrete;
     }
 
     @Override
