@@ -1,7 +1,9 @@
+import Decorator.Desconto;
 import Decorator.EmbalagemPresente;
 import Decorator.Frete;
 import Entidades.Pedido;
 import Entidades.Produto;
+import Strategy.CartaoCredito;
 import Strategy.Dinheiro;
 import Strategy.Pix;
 
@@ -56,7 +58,7 @@ public class Main{
         pedidoEmbalagem1.realizarPagamento(new Dinheiro());
 
         // ==========================
-        // Pedido 03
+        // Pedido 03: frete + 10% de desconto, pago no cartão de crédito em 3x
         // ==========================
 
         System.out.println(" ");
@@ -64,6 +66,17 @@ public class Main{
         System.out.println("Pedido 03: ");
         System.out.println("==========================");
         System.out.println(" ");
+
+        Pedido pedido3 = new Pedido();
+        pedido3.addProduto(new Produto(3, "Notebook", "Notebook 16GB", 5000));
+        Pedido pedidoComFrete = new Frete(pedido3, 100);
+        Pedido pedidoFinal = new Desconto(pedidoComFrete, 10);
+        pedidoFinal.listarProdutos();
+        System.out.println(" ");
+        System.out.println("Total: " + pedidoFinal.getTotal());
+        System.out.println(" ");
+        pedidoFinal.realizarPagamento(new CartaoCredito(3));
+
 
 
         // ==========================
