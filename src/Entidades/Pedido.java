@@ -5,15 +5,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pedido {
-    private List<Produto> produtos = new ArrayList<>();
-    protected FormaDePagamento p;
+    private List<Produto> produtos;
+    protected FormaDePagamento formaDePagamento;
+    private int contador;
 
     public Pedido() {
+        this.produtos = new ArrayList<>();
+        this.formaDePagamento = null;
+        this.contador = 1;
     }
 
     public void listarProdutos(){
-        for(Produto p : produtos){
-            System.out.println("Produto: " + p.getNome() + " | Descrição : " +p.getDescricao() + " | Preço: " + p.getPreco());
+        for (Produto produto : produtos){
+            System.out.println("Produto " + contador + ": " + produto.getNome() + " | Descrição : " + produto.getDescricao() + " | Preço: " + produto.getPreco());
+            contador++;
         }
     }
 
@@ -23,14 +28,14 @@ public class Pedido {
 
     public float getTotal(){
         float total = 0;
-        for (Produto p : produtos){
-            total += p.getPreco();
+        for (Produto produto : produtos){
+            total += produto.getPreco();
         }
         return total;
     }
 
     public void realizarPagamento(FormaDePagamento formaDePagamento){
-        this.p = formaDePagamento;
-        this.p.realizarPagamento();
+        this.formaDePagamento = formaDePagamento;
+        this.formaDePagamento.realizarPagamento();
     }
 }
