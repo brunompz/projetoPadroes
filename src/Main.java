@@ -16,3 +16,13 @@ public class Main{
         pedido1.realizarPagamento(new Pix());
     }
 }
+System.out.println();
+
+// Pedido 2: frete + 10% de desconto, pago no cartão de crédito em 3x
+Pedido pedido2 = new Pedido();
+pedido2.addProduto(new Produto(3, "Notebook", "Notebook 16GB", 5000));
+Pedido pedidoComFrete = new Frete(pedido2, 100);
+Pedido pedidoFinal = new Desconto(pedidoComFrete, 10);
+pedidoFinal.listarProdutos();
+System.out.println("Total: " + pedidoFinal.getTotal());
+pedidoFinal.realizarPagamento(new CartaoCredito(3));
