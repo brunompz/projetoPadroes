@@ -4,7 +4,7 @@ import Entidades.Produto;
 import Strategy.Pix;
 
 public class Main{
-    static void main(String[] args) {
+    public static void main(String[] args) {
         Pedido pedido1 = new Pedido();
         pedido1.addProduto(new Produto(1, "Iphone 13", "Telefone da Apple", 2300));
         pedido1.addProduto(new Produto(2, "Tablet", "Tablet pro", 4000));

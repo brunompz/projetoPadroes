@@ -1,7 +1,6 @@
 package Entidades;
 
 import Strategy.FormaDePagamento;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +30,7 @@ public class Pedido {
     }
 
     public void realizarPagamento(FormaDePagamento formaDePagamento){
-        this.p =  formaDePagamento;
+        this.p = formaDePagamento;
+        this.p.realizarPagamento();
     }
 }
