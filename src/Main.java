@@ -1,6 +1,8 @@
+import Decorator.Desconto;
 import Decorator.Frete;
 import Entidades.Pedido;
 import Entidades.Produto;
+import Strategy.CartaoCredito;
 import Strategy.Pix;
 
 public class Main{
