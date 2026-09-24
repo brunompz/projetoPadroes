@@ -1,9 +1,9 @@
 package Strategy;
 
-public class Pix implements  FormaDePagamento{
-    
+public class Pix implements FormaDePagamento {
+
     @Override
-    public void realizarPagamento(){
-        System.out.println("Realizando pagamento com PIX");
+    public void pagar(double valor) {
+        System.out.println("Pagamento de R$ " + valor + " realizado via PIX.");
     }
 }

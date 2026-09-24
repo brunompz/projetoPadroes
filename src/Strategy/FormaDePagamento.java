@@ -1,5 +1,5 @@
 package Strategy;
 
 public interface FormaDePagamento {
-    void realizarPagamento();
+    void pagar(double valor);
 }

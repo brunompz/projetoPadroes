@@ -1,41 +1,23 @@
 package Entidades;
 
 import Strategy.FormaDePagamento;
-import java.util.ArrayList;
 import java.util.List;
 
-public class Pedido {
-    private List<Produto> produtos;
-    protected FormaDePagamento formaDePagamento;
-    private int contador;
+public interface Pedido {
 
-    public Pedido() {
-        this.produtos = new ArrayList<>();
-        this.formaDePagamento = null;
-        this.contador = 1;
-    }
+    void addProduto(Produto produto);
 
-    public void listarProdutos(){
-        for (Produto produto : produtos){
-            System.out.println("Produto " + contador + ": " + produto.getNome() + " | Descrição : " + produto.getDescricao() + " | Preço: " + produto.getPreco());
-            contador++;
-        }
-    }
+    List<Produto> getProdutos();
 
-    public void addProduto(Produto produto) {
-        produtos.add(produto);
-    }
+    double getTotal();
 
-    public float getTotal(){
-        float total = 0;
-        for (Produto produto : produtos){
-            total += produto.getPreco();
-        }
-        return total;
-    }
+    void listarProdutos();
 
-    public void realizarPagamento(FormaDePagamento formaDePagamento){
-        this.formaDePagamento = formaDePagamento;
-        this.formaDePagamento.realizarPagamento();
-    }
+    void setFormaDePagamento(FormaDePagamento formaDePagamento);
+
+    FormaDePagamento getFormaDePagamento();
+
+    void realizarPagamento(FormaDePagamento formaDePagamento);
+
+    void processarPagamento();
 }

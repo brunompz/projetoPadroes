@@ -1,34 +1,31 @@
 package Decorator;
+
 import Entidades.Pedido;
 
 public class Desconto extends PedidoDecorator {
-    private float percentual;
+    private double percentual;
 
-    public Desconto(Pedido pedido, float percentual) {
+    public Desconto(Pedido pedido, double percentual) {
         super(pedido);
-        if (percentual < 0 || percentual > 100) {
-            throw new IllegalArgumentException("Percentual de desconto deve estar entre 0 e 100");
-        }
         this.percentual = percentual;
     }
 
-    public float getPercentual() {
+    public double getPercentual() {
         return percentual;
     }
 
-    // Valor em reais descontado do total do pedido envolvido
-    public float getValorDesconto() {
-        return this.pedido.getTotal() * (percentual / 100);
+    public double getValorDesconto() {
+        return pedidoDecorado.getTotal() * (percentual / 100);
+    }
+
+    @Override
+    public double getTotal() {
+        return pedidoDecorado.getTotal() - getValorDesconto();
     }
 
     @Override
     public void listarProdutos() {
         super.listarProdutos();
-        System.out.println(" - Desconto: " + getPercentual() + "% (" + getValorDesconto() + ")");
-    }
-
-    @Override
-    public float getTotal() {
-        return this.pedido.getTotal() - getValorDesconto();
+        System.out.println(" - Desconto: " + percentual + "% (-R$ " + getValorDesconto() + ")");
     }
 }

@@ -1,10 +1,9 @@
 package Strategy;
 
-public class Dinheiro implements FormaDePagamento{
+public class Dinheiro implements FormaDePagamento {
 
     @Override
-    public void realizarPagamento(){
-        System.out.println("Realizando pagamento com Dinheiro");
+    public void pagar(double valor) {
+        System.out.println("Pagamento de R$ " + valor + " realizado em Dinheiro.");
     }
-
 }

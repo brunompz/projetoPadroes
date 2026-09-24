@@ -1,18 +1,13 @@
 package Strategy;
 
 public class CartaoCredito implements FormaDePagamento {
-    private static final int MAX_PARCELAS = 12;
     private int parcelas;
 
-    // Construtor padrão: pagamento à vista (1x)
     public CartaoCredito() {
         this(1);
     }
 
     public CartaoCredito(int parcelas) {
-        if (parcelas < 1 || parcelas > MAX_PARCELAS) {
-            throw new IllegalArgumentException("Número de parcelas deve estar entre 1 e " + MAX_PARCELAS);
-        }
         this.parcelas = parcelas;
     }
 
@@ -21,7 +16,12 @@ public class CartaoCredito implements FormaDePagamento {
     }
 
     @Override
-    public void realizarPagamento() {
-        System.out.println("Realizando pagamento com Cartão de Crédito em " + parcelas + "x");
+    public void pagar(double valor) {
+        if (parcelas <= 1) {
+            System.out.println("Pagamento de R$ " + valor + " realizado com Cartão de Crédito à vista (1x).");
+        } else {
+            double valorParcela = valor / parcelas;
+            System.out.println("Pagamento de R$ " + valor + " realizado com Cartão de Crédito em " + parcelas + "x de R$ " + valorParcela);
+        }
     }
 }
