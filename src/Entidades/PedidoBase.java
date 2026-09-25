@@ -50,15 +50,8 @@ public class PedidoBase implements Pedido {
     }
 
     @Override
-    public void processarPagamento() {
-        if (this.formaDePagamento != null) {
-            this.formaDePagamento.pagar(this.getTotal());
-        }
-    }
-
-    @Override
     public void realizarPagamento(FormaDePagamento formaDePagamento) {
         setFormaDePagamento(formaDePagamento);
-        processarPagamento();
+        this.formaDePagamento.pagar(this.getTotal());
     }
 }

@@ -43,14 +43,6 @@ public abstract class PedidoDecorator implements Pedido {
     }
 
     @Override
-    public void processarPagamento() {
-        FormaDePagamento forma = getFormaDePagamento();
-        if (forma != null) {
-            forma.pagar(this.getTotal());
-        }
-    }
-
-    @Override
     public void realizarPagamento(FormaDePagamento formaDePagamento) {
         setFormaDePagamento(formaDePagamento);
         formaDePagamento.pagar(this.getTotal());

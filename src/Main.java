@@ -103,9 +103,7 @@ public class Main {
         pedido4Decorado.setFormaDePagamento(new Dinheiro());
 
         System.out.println("--- Mudando para Cartão de Crédito (6x) ---");
-        pedido4Decorado.setFormaDePagamento(new CartaoCredito(6));
-
-        pedido4Decorado.processarPagamento();
+        pedido4Decorado.realizarPagamento(new CartaoCredito(6));
 
         // ==========================
         // Pedido 05: Produtos + Entrega Rápida, pago no Cartão de Débito

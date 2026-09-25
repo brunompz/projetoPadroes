@@ -18,6 +18,4 @@ public interface Pedido {
     FormaDePagamento getFormaDePagamento();
 
     void realizarPagamento(FormaDePagamento formaDePagamento);
-
-    void processarPagamento();
 }
